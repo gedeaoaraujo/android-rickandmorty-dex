@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.ui.theme
+package com.acmelabs.rickandmortydex.presentation.theme
 
 import android.app.Activity
 import android.os.Build

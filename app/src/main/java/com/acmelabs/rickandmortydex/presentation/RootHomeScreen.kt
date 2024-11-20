@@ -14,7 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import com.acmelabs.rickandmortydex.ui.theme.RickAndMortyDexTheme
+import com.acmelabs.rickandmortydex.presentation.theme.RickAndMortyDexTheme
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
