@@ -10,4 +10,7 @@ interface CharacterService {
     suspend fun getCharacterById(
         @Path("charId") charId: Int
     ): Response<CharacterResponse>
+
+    @GET("character")
+    suspend fun getAllCharacters(): Response<AllCharactersResponse>
 }
