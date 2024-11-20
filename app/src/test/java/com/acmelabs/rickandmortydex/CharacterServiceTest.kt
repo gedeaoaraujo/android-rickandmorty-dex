@@ -1,6 +1,6 @@
 package com.acmelabs.rickandmortydex
 
-import com.acmelabs.rickandmortydex.data.network.CharacterService
+import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.rickAndMortyClient
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals

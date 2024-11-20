@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data.network
+package com.acmelabs.rickandmortydex.data.network.character_service
 
 data class OriginResponse(
     val name: String,

@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data.network
+package com.acmelabs.rickandmortydex.data.network.character_service
 
 import retrofit2.Response
 import retrofit2.http.GET
