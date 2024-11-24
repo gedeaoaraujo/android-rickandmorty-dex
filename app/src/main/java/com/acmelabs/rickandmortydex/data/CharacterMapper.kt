@@ -9,6 +9,7 @@ fun CharacterResponse.toModel(): CharacterModel {
         name = name,
         status = status,
         species = species,
-        origin = origin.name
+        origin = origin.name,
+        imageUrl = image
     )
 }
