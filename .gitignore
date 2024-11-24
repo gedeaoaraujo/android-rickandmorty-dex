@@ -15,3 +15,6 @@
 local.properties
 /.idea/androidTestResultsUserPreferences.xml
 /.idea/dictionaries/*.xml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
