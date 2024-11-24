@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.injections
+package com.acmelabs.rickandmortydex.injection
 
 import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.rickAndMortyClient
