@@ -24,7 +24,7 @@ import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 @Composable
 fun CharacterItem(item: CharacterModel) {
     Card(Modifier.padding(4.dp)) {
-        Row(modifier = Modifier.fillMaxHeight()) {
+        Row(modifier = Modifier.fillMaxHeight().background(MaterialTheme.colorScheme.secondary)) {
             AsyncImage(
                 model = item.imageUrl,
                 contentDescription = item.name,
@@ -32,12 +32,7 @@ fun CharacterItem(item: CharacterModel) {
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier.size(100.dp, 140.dp)
             )
-            Column(
-                Modifier
-                    .background(MaterialTheme.colorScheme.secondary)
-                    .padding(16.dp)
-                    .fillMaxWidth()
-            ) {
+            Column(Modifier.padding(16.dp).fillMaxWidth()) {
                 Text(text = item.name, color = MaterialTheme.colorScheme.onPrimary)
                 Spacer(modifier = Modifier.height(6.dp))
                 Row {
