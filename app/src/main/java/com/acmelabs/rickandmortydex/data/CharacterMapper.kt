@@ -6,6 +6,9 @@ import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 fun CharacterResponse.toModel(): CharacterModel {
     return CharacterModel(
         id = id,
-        name = name
+        name = name,
+        status = status,
+        species = species,
+        origin = origin.name
     )
 }
