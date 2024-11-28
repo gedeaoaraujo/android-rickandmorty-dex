@@ -47,7 +47,7 @@ fun RootHomeScreen() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                HomeScreen(error, characters)
+                HomeScreen(error, characters, viewModel::getAll)
             }
         }
     }

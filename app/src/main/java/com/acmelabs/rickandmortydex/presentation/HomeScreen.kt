@@ -3,10 +3,6 @@ package com.acmelabs.rickandmortydex.presentation
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.acmelabs.rickandmortydex.R
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
@@ -14,15 +10,14 @@ import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 @Composable
 fun HomeScreen(
     resError: Int? = null,
-    characters: List<CharacterModel>
+    characters: List<CharacterModel>,
+    onTryAgain: (() -> Unit)? = {}
 ) {
-    var showError by remember { mutableStateOf(resError == null) }
-    if (showError && resError != null) {
+    if (resError != null) {
         AlertDialog(
             text = resError,
             title = R.string.error_dialog_title,
-            onConfirmation = { showError = false },
-            onDismissRequest = { showError = false }
+            onConfirmation = { onTryAgain?.invoke() }
         )
     } else {
         LazyColumn {

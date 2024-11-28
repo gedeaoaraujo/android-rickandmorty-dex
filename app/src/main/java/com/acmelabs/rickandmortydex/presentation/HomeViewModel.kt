@@ -12,6 +12,7 @@ import com.acmelabs.rickandmortydex.domain.repository.Status.ServerError
 import com.acmelabs.rickandmortydex.domain.repository.Status.Unknown
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -22,15 +23,18 @@ class HomeViewModel(
     val characters: StateFlow<List<CharacterModel>> = _characters
 
     private val _error = MutableStateFlow<Int?>(null)
-    val error: StateFlow<Int?> = _error
+    val error: StateFlow<Int?> = _error.asStateFlow()
 
     init {
         getAll()
     }
 
-    private fun getAll() = viewModelScope.launch {
+    fun getAll() = viewModelScope.launch {
         when (val response = characterRepository.getAllCharacters()){
-            is Ok -> response.body?.let { _characters.value = it }
+            is Ok -> response.body?.let {
+                _characters.value = it
+                _error.value = null
+            }
             is Redirect, is ServerError, is ClientError -> {
                 _error.value = R.string.error_dialog_text
             }
