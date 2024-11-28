@@ -3,7 +3,6 @@ package com.acmelabs.rickandmortydex.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.acmelabs.rickandmortydex.R
-import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 import com.acmelabs.rickandmortydex.domain.repository.CharacterRepository
 import com.acmelabs.rickandmortydex.domain.repository.Status.ClientError
 import com.acmelabs.rickandmortydex.domain.repository.Status.Ok
@@ -13,32 +12,37 @@ import com.acmelabs.rickandmortydex.domain.repository.Status.Unknown
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val characterRepository: CharacterRepository
 ) : ViewModel() {
 
-    private val _characters = MutableStateFlow<List<CharacterModel>>(emptyList())
-    val characters: StateFlow<List<CharacterModel>> = _characters
-
-    private val _error = MutableStateFlow<Int?>(null)
-    val error: StateFlow<Int?> = _error.asStateFlow()
+    private val _state = MutableStateFlow(HomeScreenState())
+    val state: StateFlow<HomeScreenState> = _state.asStateFlow()
 
     init {
         getAll()
     }
 
-    fun getAll() = viewModelScope.launch {
+    private fun getAll() = viewModelScope.launch {
         when (val response = characterRepository.getAllCharacters()){
-            is Ok -> response.body?.let {
-                _characters.value = it
-                _error.value = null
+            is Ok -> response.body?.let { characters ->
+                _state.update { it.copy(characters = characters, resError = null) }
             }
             is Redirect, is ServerError, is ClientError -> {
-                _error.value = R.string.error_dialog_text
+                _state.update { it.copy(resError = R.string.error_dialog_text) }
             }
-            is Unknown -> _error.value = R.string.error_dialog_unknown
+            is Unknown -> {
+                _state.update { it.copy(resError =  R.string.error_dialog_unknown) }
+            }
+        }
+    }
+
+    fun onAction(action: HomeScreenActions){
+        when(action){
+            HomeScreenActions.OnDialogTryAgain -> getAll()
         }
     }
 

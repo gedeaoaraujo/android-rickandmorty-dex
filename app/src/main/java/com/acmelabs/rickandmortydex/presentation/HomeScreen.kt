@@ -5,23 +5,21 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.acmelabs.rickandmortydex.R
-import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 
 @Composable
 fun HomeScreen(
-    resError: Int? = null,
-    characters: List<CharacterModel>,
-    onTryAgain: (() -> Unit)? = {}
+    state: HomeScreenState,
+    onAction: (HomeScreenActions) -> Unit = {}
 ) {
-    if (resError != null) {
+    if (state.resError != null) {
         AlertDialog(
-            text = resError,
+            text = state.resError,
             title = R.string.error_dialog_title,
-            onConfirmation = { onTryAgain?.invoke() }
+            onConfirmation = { onAction(HomeScreenActions.OnDialogTryAgain) }
         )
     } else {
         LazyColumn {
-            items(characters) { item ->
+            items(state.characters) { item ->
                 CharacterItem(item)
             }
         }
@@ -31,5 +29,5 @@ fun HomeScreen(
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(characters = emptyList())
+    HomeScreen(HomeScreenState())
 }
