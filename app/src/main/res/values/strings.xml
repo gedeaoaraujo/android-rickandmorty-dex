@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RickAndMortyDex</string>
+
+    <string name="error_dialog_title">Erro</string>
+    <string name="error_dialog_text">Ocorreu um erro ao ser conectar com o servidor.</string>
+    <string name="error_dialog_unknown">Ocorreu um erro desconhecido ao ser conectar com o servidor.</string>
 </resources>
