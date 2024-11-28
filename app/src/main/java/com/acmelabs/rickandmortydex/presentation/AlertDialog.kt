@@ -12,23 +12,19 @@ import androidx.compose.ui.res.stringResource
 fun AlertDialog(
     text: Int,
     title: Int,
-    onConfirmation: () -> Unit = {},
-    onDismissRequest: () -> Unit = {},
+    onConfirmation: ()->Unit = {},
+    onDismissRequest: (()->Unit)? = null,
 ) {
     AlertDialog(
         title = { Text(text = stringResource(id = title)) },
         text = { Text(text = stringResource(id = text)) },
-        onDismissRequest = { onDismissRequest() },
         confirmButton = {
-            TextButton(onClick = { onConfirmation() }) {
-                Text("Confirm")
-            }
+            TextButton(onClick = onConfirmation) { Text("Tentar novamente") }
         },
-        dismissButton = {
-            TextButton(onClick = { onDismissRequest() }) {
-                Text("Dismiss")
-            }
-        },
+        dismissButton = { if (onDismissRequest != null) {
+            TextButton(onClick = onDismissRequest) { Text("Cancelar") }
+        }},
+        onDismissRequest = {},
         modifier = Modifier.fillMaxWidth()
     )
 }
