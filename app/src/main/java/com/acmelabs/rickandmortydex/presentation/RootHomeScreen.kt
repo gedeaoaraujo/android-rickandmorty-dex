@@ -25,6 +25,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun RootHomeScreen() {
     val viewModel = koinViewModel<HomeViewModel>()
+    val error by viewModel.error.collectAsState()
     val characters by viewModel.characters.collectAsState()
     RickAndMortyDexTheme {
         Scaffold(
@@ -46,7 +47,7 @@ fun RootHomeScreen() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                HomeScreen(characters)
+                HomeScreen(error, characters)
             }
         }
     }
