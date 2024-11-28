@@ -10,8 +10,10 @@ import com.acmelabs.rickandmortydex.domain.repository.Status.Redirect
 import com.acmelabs.rickandmortydex.domain.repository.Status.ServerError
 import com.acmelabs.rickandmortydex.domain.repository.Status.Unknown
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -20,11 +22,9 @@ class HomeViewModel(
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(HomeScreenState())
-    val state: StateFlow<HomeScreenState> = _state.asStateFlow()
-
-    init {
-        getAll()
-    }
+    val state: StateFlow<HomeScreenState> = _state
+        .onStart { getAll() }
+        .stateIn(viewModelScope, SharingStarted.Lazily, _state.value)
 
     private fun getAll() = viewModelScope.launch {
         when (val response = characterRepository.getAllCharacters()){
