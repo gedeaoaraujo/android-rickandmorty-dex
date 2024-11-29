@@ -1,5 +1,7 @@
 package com.acmelabs.rickandmortydex.data.network.character_service
 
+import com.acmelabs.rickandmortydex.data.network.location_service.LocationResponse
+
 
 data class CharacterResponse(
     val id: Int,

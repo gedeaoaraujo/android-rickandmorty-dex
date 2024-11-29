@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data.network.character_service
+package com.acmelabs.rickandmortydex.data.network.location_service
 
 data class LocationResponse(
     val name: String,
