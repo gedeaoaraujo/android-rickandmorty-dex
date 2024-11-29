@@ -27,6 +27,7 @@ class HomeViewModel(
         .stateIn(viewModelScope, SharingStarted.Lazily, _state.value)
 
     private fun getAll() = viewModelScope.launch {
+        _state.update { it.copy(isLoading = true) }
         when (val response = characterRepository.getAllCharacters()){
             is Ok -> response.body?.let { characters ->
                 _state.update { it.copy(characters = characters, resError = null) }
@@ -38,6 +39,7 @@ class HomeViewModel(
                 _state.update { it.copy(resError =  R.string.error_dialog_unknown) }
             }
         }
+        _state.update { it.copy(isLoading = false) }
     }
 
     fun onAction(action: HomeScreenActions){
