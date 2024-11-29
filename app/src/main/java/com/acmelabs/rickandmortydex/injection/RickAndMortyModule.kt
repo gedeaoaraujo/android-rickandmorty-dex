@@ -2,6 +2,9 @@ package com.acmelabs.rickandmortydex.injection
 
 import com.acmelabs.rickandmortydex.data.database.AppRoomDatabase
 import com.acmelabs.rickandmortydex.data.database.CharacterDao
+import com.acmelabs.rickandmortydex.data.database.EpisodeDao
+import com.acmelabs.rickandmortydex.data.database.LocationDao
+import com.acmelabs.rickandmortydex.data.database.OriginDao
 import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.rickAndMortyClient
 import com.acmelabs.rickandmortydex.data.repository.CharacterRepositoryImpl
@@ -13,12 +16,11 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val rickAndMortyModule = module {
-    single<CharacterService> {
-        rickAndMortyClient(CharacterService::class.java)
-    }
-    single<CharacterDao> {
-        AppRoomDatabase.getDatabase(androidContext()).characterDao()
-    }
+    single<CharacterService> { rickAndMortyClient(CharacterService::class.java) }
+    single<CharacterDao> { AppRoomDatabase.getDatabase(androidContext()).characterDao() }
+    single<EpisodeDao> { AppRoomDatabase.getDatabase(androidContext()).episodeDao() }
+    single<LocationDao> { AppRoomDatabase.getDatabase(androidContext()).locationDao() }
+    single<OriginDao> { AppRoomDatabase.getDatabase(androidContext()).originDao() }
     singleOf(::CharacterRepositoryImpl) { bind<CharacterRepository>() }
     singleOf(::HomeViewModel)
 }

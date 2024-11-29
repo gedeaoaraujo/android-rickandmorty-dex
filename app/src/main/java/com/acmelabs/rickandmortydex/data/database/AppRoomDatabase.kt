@@ -21,6 +21,9 @@ import com.acmelabs.rickandmortydex.data.database.entity.OriginEntity
 )
 abstract class AppRoomDatabase : RoomDatabase(){
     abstract fun characterDao(): CharacterDao
+    abstract fun locationDao(): LocationDao
+    abstract fun episodeDao(): EpisodeDao
+    abstract fun originDao(): OriginDao
 
     companion object {
         fun getDatabase(context: Context): AppRoomDatabase {
