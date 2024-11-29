@@ -12,5 +12,5 @@ interface CharacterService {
     ): Response<CharacterResponse>
 
     @GET("character")
-    suspend fun getAllCharacters(): Response<AllCharactersResponse>
+    suspend fun getAllCharacters(): Response<ApiResponse<CharacterResponse>>
 }

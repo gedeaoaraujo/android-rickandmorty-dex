@@ -1,6 +1,6 @@
 package com.acmelabs.rickandmortydex.data.network.character_service
 
-data class AllCharactersResponse(
+data class ApiResponse<T>(
     val info: InfoResponse,
-    val results: List<CharacterResponse>
+    val results: List<T>
 )
