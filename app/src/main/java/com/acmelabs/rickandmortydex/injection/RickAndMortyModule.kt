@@ -4,7 +4,6 @@ import com.acmelabs.rickandmortydex.data.database.AppRoomDatabase
 import com.acmelabs.rickandmortydex.data.database.CharacterDao
 import com.acmelabs.rickandmortydex.data.database.EpisodeDao
 import com.acmelabs.rickandmortydex.data.database.LocationDao
-import com.acmelabs.rickandmortydex.data.database.OriginDao
 import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.rickAndMortyClient
 import com.acmelabs.rickandmortydex.data.repository.CharacterRepositoryImpl
@@ -20,7 +19,6 @@ val rickAndMortyModule = module {
     single<CharacterDao> { AppRoomDatabase.getDatabase(androidContext()).characterDao() }
     single<EpisodeDao> { AppRoomDatabase.getDatabase(androidContext()).episodeDao() }
     single<LocationDao> { AppRoomDatabase.getDatabase(androidContext()).locationDao() }
-    single<OriginDao> { AppRoomDatabase.getDatabase(androidContext()).originDao() }
     singleOf(::CharacterRepositoryImpl) { bind<CharacterRepository>() }
     singleOf(::HomeViewModel)
 }

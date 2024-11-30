@@ -10,7 +10,7 @@ data class CharacterResponse(
     val species: String,
     val type: String,
     val gender: String,
-    val origin: OriginResponse,
+    val origin: LocationResponse,
     val location: LocationResponse,
     val image: String,
     val episode: List<String>,

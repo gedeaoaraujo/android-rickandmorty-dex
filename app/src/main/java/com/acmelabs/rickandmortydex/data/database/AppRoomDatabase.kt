@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import com.acmelabs.rickandmortydex.data.database.entity.CharacterEntity
 import com.acmelabs.rickandmortydex.data.database.entity.EpisodeEntity
 import com.acmelabs.rickandmortydex.data.database.entity.LocationEntity
-import com.acmelabs.rickandmortydex.data.database.entity.OriginEntity
 
 @Database(
     version = 1,
@@ -15,7 +14,6 @@ import com.acmelabs.rickandmortydex.data.database.entity.OriginEntity
     entities = [
         CharacterEntity::class,
         LocationEntity::class,
-        OriginEntity::class,
         EpisodeEntity::class
     ]
 )
@@ -23,7 +21,6 @@ abstract class AppRoomDatabase : RoomDatabase(){
     abstract fun characterDao(): CharacterDao
     abstract fun locationDao(): LocationDao
     abstract fun episodeDao(): EpisodeDao
-    abstract fun originDao(): OriginDao
 
     companion object {
         fun getDatabase(context: Context): AppRoomDatabase {
