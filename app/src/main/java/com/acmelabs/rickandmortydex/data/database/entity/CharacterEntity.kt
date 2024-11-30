@@ -12,9 +12,10 @@ data class CharacterEntity(
     val species: String,
     val type: String,
     val gender: String,
-    val originId: Int,
-    val locationId: Int,
+    val originId: Int?,
+    val locationId: Int?,
     val image: String,
     val url: String,
-    val created: String
+    val created: String,
+    val episodesIds: String
 )

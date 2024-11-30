@@ -23,10 +23,11 @@ fun CharacterResponse.toEntity(): CharacterEntity {
         species = species,
         type = type,
         gender = gender,
-        originId = origin.toEntity().id,
-        locationId = location.toEntity().id,
+        originId = urlToId(origin.url),
+        locationId = urlToId(location.url),
         image = image,
         url = url,
         created = created,
+        episodesIds = urlsToId(episode)
     )
 }
