@@ -17,7 +17,7 @@ fun CharacterResponse.toModel(): CharacterModel {
 
 fun CharacterResponse.toEntity(): CharacterEntity {
     return CharacterEntity(
-        apiId = id,
+        id = id,
         name = name,
         status = status,
         species = species,
