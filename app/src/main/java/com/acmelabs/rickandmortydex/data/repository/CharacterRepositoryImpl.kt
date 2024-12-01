@@ -10,9 +10,12 @@ import com.acmelabs.rickandmortydex.data.toEntity
 import com.acmelabs.rickandmortydex.data.toModel
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 import com.acmelabs.rickandmortydex.domain.repository.CharacterRepository
-import com.acmelabs.rickandmortydex.domain.repository.Status
 import com.acmelabs.rickandmortydex.domain.repository.safeCall
-import com.acmelabs.rickandmortydex.domain.repository.wrapHttpStatus
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class CharacterRepositoryImpl(
     private val characterDao: CharacterDao,
@@ -23,25 +26,43 @@ class CharacterRepositoryImpl(
     private val locationService: LocationService
 ): CharacterRepository {
 
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+
     override suspend fun loadTheWorld() {
-        val resEpisodes = safeCall { episodeService.getAllEpisodes() }
-        val episodes = resEpisodes.body?.results.orEmpty()
-        episodeDao.upsert(episodes.map { it.toEntity() })
+        doPagination { page ->
+            val resEpisodes = safeCall { episodeService.getAllEpisodes(page) }
+            val episodes = resEpisodes.body?.results.orEmpty()
+            episodeDao.upsert(episodes.map { it.toEntity() })
+            resEpisodes.body?.info?.next
+        }
 
-        val resLocation = safeCall { locationService.getAllEpisodes() }
-        val locations = resLocation.body?.results.orEmpty()
-        locationDao.upsert(locations.map { it.toEntity() })
+        doPagination { page ->
+            val resLocation = safeCall { locationService.getAllLocations(page) }
+            val locations = resLocation.body?.results.orEmpty()
+            locationDao.upsert(locations.map { it.toEntity() })
+            resLocation.body?.info?.next
+        }
 
-        val resCharacters = safeCall { characterService.getAllCharacters() }
-        val characters = resCharacters.body?.results.orEmpty()
-        characterDao.upsert(characters.map { it.toEntity() })
+        doPagination { page ->
+            val resCharacters = safeCall { characterService.getAllCharacters(page) }
+            val characters = resCharacters.body?.results.orEmpty()
+            characterDao.upsert(characters.map { it.toEntity() })
+            resCharacters.body?.info?.next
+        }
     }
 
-    override suspend fun getAllCharacters(): Status<List<CharacterModel>> {
-        val result = safeCall { characterService.getAllCharacters() }
-        val list = result.body?.results.orEmpty()
-        val models = list.map { it.toModel() }
-        return wrapHttpStatus(models, result.code)
+    private suspend fun doPagination(callback: suspend (Int) -> String?) {
+        coroutineScope.launch {
+            var pageCounter = 1
+            do {
+                val response = callback(pageCounter)
+                pageCounter += 1
+            } while (response != null)
+        }
+    }
+
+    override fun getAllCharacters(): Flow<List<CharacterModel>> {
+        return characterDao.getAllCharacters().map { it.map { it.toModel() } }
     }
 
 }
