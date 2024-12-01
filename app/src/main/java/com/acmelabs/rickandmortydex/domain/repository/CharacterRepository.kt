@@ -1,8 +1,9 @@
 package com.acmelabs.rickandmortydex.domain.repository
 
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
+import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {
     suspend fun loadTheWorld()
-    suspend fun getAllCharacters(): Status<List<CharacterModel>>
+    fun getAllCharacters(): Flow<List<CharacterModel>>
 }
