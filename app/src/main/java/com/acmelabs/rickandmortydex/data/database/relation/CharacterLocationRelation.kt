@@ -12,5 +12,5 @@ data class CharacterLocationRelation(
         parentColumn = "originId",
         entityColumn = "id"
     )
-    val location: LocationEntity
+    val location: LocationEntity?
 )
