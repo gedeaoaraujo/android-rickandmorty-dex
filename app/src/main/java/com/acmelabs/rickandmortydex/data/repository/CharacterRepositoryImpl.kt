@@ -6,8 +6,8 @@ import com.acmelabs.rickandmortydex.data.database.dao.LocationDao
 import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.episode_service.EpisodeService
 import com.acmelabs.rickandmortydex.data.network.location_service.LocationService
-import com.acmelabs.rickandmortydex.data.toEntity
-import com.acmelabs.rickandmortydex.data.toModel
+import com.acmelabs.rickandmortydex.data.mapper.toEntity
+import com.acmelabs.rickandmortydex.data.mapper.toModel
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 import com.acmelabs.rickandmortydex.domain.repository.CharacterRepository
 import com.acmelabs.rickandmortydex.domain.repository.safeCall

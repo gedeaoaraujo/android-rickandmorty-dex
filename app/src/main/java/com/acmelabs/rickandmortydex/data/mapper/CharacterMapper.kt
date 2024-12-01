@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data
+package com.acmelabs.rickandmortydex.data.mapper
 
 import com.acmelabs.rickandmortydex.data.database.relation.CharacterLocationRelation
 import com.acmelabs.rickandmortydex.data.database.entity.CharacterEntity

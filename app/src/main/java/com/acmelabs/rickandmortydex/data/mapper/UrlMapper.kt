@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data
+package com.acmelabs.rickandmortydex.data.mapper
 
 import android.net.Uri
 

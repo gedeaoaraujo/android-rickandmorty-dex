@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data
+package com.acmelabs.rickandmortydex.data.mapper
 
 import com.acmelabs.rickandmortydex.data.database.entity.LocationEntity
 import com.acmelabs.rickandmortydex.data.network.location_service.LocationResponse

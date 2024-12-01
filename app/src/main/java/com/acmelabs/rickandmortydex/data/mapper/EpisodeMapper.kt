@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data
+package com.acmelabs.rickandmortydex.data.mapper
 
 import com.acmelabs.rickandmortydex.data.database.entity.EpisodeEntity
 import com.acmelabs.rickandmortydex.data.network.episode_service.EpisodeResponse
