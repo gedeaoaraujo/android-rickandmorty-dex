@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.data.database
+package com.acmelabs.rickandmortydex.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Upsert

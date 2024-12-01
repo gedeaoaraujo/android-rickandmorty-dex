@@ -1,9 +1,9 @@
 package com.acmelabs.rickandmortydex.injection
 
 import com.acmelabs.rickandmortydex.data.database.AppRoomDatabase
-import com.acmelabs.rickandmortydex.data.database.CharacterDao
-import com.acmelabs.rickandmortydex.data.database.EpisodeDao
-import com.acmelabs.rickandmortydex.data.database.LocationDao
+import com.acmelabs.rickandmortydex.data.database.dao.CharacterDao
+import com.acmelabs.rickandmortydex.data.database.dao.EpisodeDao
+import com.acmelabs.rickandmortydex.data.database.dao.LocationDao
 import com.acmelabs.rickandmortydex.data.network.character_service.CharacterService
 import com.acmelabs.rickandmortydex.data.network.episode_service.EpisodeService
 import com.acmelabs.rickandmortydex.data.network.location_service.LocationService
