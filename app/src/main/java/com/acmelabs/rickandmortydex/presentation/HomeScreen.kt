@@ -35,6 +35,12 @@ fun HomeScreen(
                 text = stringResource(R.string.carregando_dados)
             )
         }
+        return
+    }
+
+    if (state.characters.isEmpty()) {
+        HomeScreenEmptyList()
+        return
     } else {
         LazyColumn {
             items(state.characters) { item ->
