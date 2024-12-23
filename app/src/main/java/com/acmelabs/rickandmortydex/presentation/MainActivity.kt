@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.acmelabs.rickandmortydex.presentation.details.DetailsScreen
 import com.acmelabs.rickandmortydex.presentation.home.RootHomeScreen
 
 class MainActivity : ComponentActivity() {
