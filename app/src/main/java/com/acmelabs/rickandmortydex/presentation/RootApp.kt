@@ -28,7 +28,6 @@ import com.acmelabs.rickandmortydex.presentation.theme.RickAndMortyDexTheme
 fun RootApp() {
     RickAndMortyDexTheme {
         Scaffold(
-            modifier = Modifier.padding(WindowInsets.statusBars.asPaddingValues()),
             topBar = {
                 CenterAlignedTopAppBar(
                     title = { Text(text = "Rick & Morty") },
