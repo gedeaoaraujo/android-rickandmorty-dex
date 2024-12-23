@@ -12,7 +12,7 @@ import com.acmelabs.rickandmortydex.data.network.location_service.LocationServic
 import com.acmelabs.rickandmortydex.data.network.rickAndMortyClient
 import com.acmelabs.rickandmortydex.data.repository.CharacterRepositoryImpl
 import com.acmelabs.rickandmortydex.domain.repository.CharacterRepository
-import com.acmelabs.rickandmortydex.presentation.HomeViewModel
+import com.acmelabs.rickandmortydex.presentation.home.HomeViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.bind

@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.presentation
+package com.acmelabs.rickandmortydex.presentation.home
 
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 

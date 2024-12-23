@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.presentation
+package com.acmelabs.rickandmortydex.presentation.home
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.acmelabs.rickandmortydex.R
+import com.acmelabs.rickandmortydex.presentation.AlertDialog
 
 @Composable
 fun HomeScreen(

@@ -1,4 +1,4 @@
-package com.acmelabs.rickandmortydex.presentation
+package com.acmelabs.rickandmortydex.presentation.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
