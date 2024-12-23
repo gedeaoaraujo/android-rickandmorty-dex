@@ -47,9 +47,9 @@ fun RootApp() {
                     .background(MaterialTheme.colorScheme.background)
             ) {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = "home") {
-                    composable("home") { RootHomeScreen(navController) }
-                    composable("details") { DetailsScreen() }
+                NavHost(navController, startDestination = Route.HOME) {
+                    composable(Route.HOME) { RootHomeScreen(navController) }
+                    composable(Route.DETAILS) { DetailsScreen() }
                 }
             }
         }

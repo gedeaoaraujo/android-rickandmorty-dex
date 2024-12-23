@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.acmelabs.rickandmortydex.R
 import com.acmelabs.rickandmortydex.presentation.AlertDialog
+import com.acmelabs.rickandmortydex.presentation.Route
 import com.acmelabs.rickandmortydex.presentation.home.HomeScreenActions.OnDialogTryAgain
 import org.koin.androidx.compose.koinViewModel
 
@@ -50,7 +51,7 @@ fun RootHomeScreen(navController: NavHostController) {
         LazyColumn {
             items(state.characters) { item ->
                 CharacterItem(item) {
-                    navController.navigate("details")
+                    navController.navigate(Route.DETAILS)
                 }
             }
         }
