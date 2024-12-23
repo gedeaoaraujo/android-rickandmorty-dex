@@ -1,6 +1,7 @@
 package com.acmelabs.rickandmortydex.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,8 +24,8 @@ import com.acmelabs.rickandmortydex.R
 import com.acmelabs.rickandmortydex.domain.model.CharacterModel
 
 @Composable
-fun CharacterItem(item: CharacterModel) {
-    Card(Modifier.padding(4.dp)) {
+fun CharacterItem(item: CharacterModel, onSelectItem: () -> Unit = {}) {
+    Card(Modifier.padding(4.dp).clickable(onClick = onSelectItem)) {
         Row(modifier = Modifier.fillMaxHeight().background(MaterialTheme.colorScheme.secondary)) {
             AsyncImage(
                 model = item.imageUrl,

@@ -18,12 +18,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.acmelabs.rickandmortydex.presentation.theme.RickAndMortyDexTheme
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RootHomeScreen() {
+fun RootHomeScreen(navController: NavHostController) {
     val viewModel = koinViewModel<HomeViewModel>()
     val state by viewModel.state.collectAsState()
     RickAndMortyDexTheme {
@@ -46,7 +47,7 @@ fun RootHomeScreen() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                HomeScreen(state, viewModel::onAction)
+                HomeScreen(state, viewModel::onAction, navController)
             }
         }
     }
