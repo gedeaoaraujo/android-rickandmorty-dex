@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import com.acmelabs.rickandmortydex.presentation.theme.RickAndMortyDexTheme
 
 @Composable
-fun DetailsScreen() {
+fun RootDetailsScreen() {
     RickAndMortyDexTheme {
         Box(Modifier.fillMaxSize()) {
             Text(text = "Detalhes")

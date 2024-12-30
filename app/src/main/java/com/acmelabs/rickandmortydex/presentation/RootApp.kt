@@ -2,11 +2,8 @@ package com.acmelabs.rickandmortydex.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -19,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.acmelabs.rickandmortydex.presentation.details.DetailsScreen
+import com.acmelabs.rickandmortydex.presentation.details.RootDetailsScreen
 import com.acmelabs.rickandmortydex.presentation.home.RootHomeScreen
 import com.acmelabs.rickandmortydex.presentation.theme.RickAndMortyDexTheme
 
@@ -48,7 +45,7 @@ fun RootApp() {
                 val navController = rememberNavController()
                 NavHost(navController, startDestination = Route.HOME) {
                     composable(Route.HOME) { RootHomeScreen(navController) }
-                    composable(Route.DETAILS) { DetailsScreen() }
+                    composable(Route.DETAILS) { RootDetailsScreen() }
                 }
             }
         }
