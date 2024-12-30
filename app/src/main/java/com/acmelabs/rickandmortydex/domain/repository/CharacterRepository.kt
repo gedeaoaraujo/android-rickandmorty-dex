@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterRepository {
     suspend fun loadTheWorld()
     fun getAllCharacters(): Flow<List<CharacterModel>>
+    fun getCharacterById(id: Int): Flow<CharacterModel>
 }

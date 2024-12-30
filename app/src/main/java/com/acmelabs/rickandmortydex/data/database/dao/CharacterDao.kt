@@ -17,4 +17,7 @@ interface CharacterDao {
     @Transaction
     @Query("SELECT * FROM characters")
     fun getAllCharacters(): Flow<List<CharacterLocationRelation>>
+
+    @Query("SELECT * FROM characters WHERE id = :id")
+    fun getCharacterById(id: Int): Flow<CharacterLocationRelation>
 }

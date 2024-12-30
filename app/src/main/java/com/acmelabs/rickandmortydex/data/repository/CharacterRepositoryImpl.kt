@@ -65,4 +65,8 @@ class CharacterRepositoryImpl(
         return characterDao.getAllCharacters().map { it.map { it.toModel() } }
     }
 
+    override fun getCharacterById(id: Int): Flow<CharacterModel> {
+        return characterDao.getCharacterById(id).map { it.toModel() }
+    }
+
 }
