@@ -51,7 +51,7 @@ fun RootHomeScreen(navController: NavHostController) {
         LazyColumn {
             items(state.characters) { item ->
                 CharacterItem(item) {
-                    navController.navigate(Route.DETAILS)
+                    navController.navigate("${Route.DETAILS}/${item.id}")
                 }
             }
         }

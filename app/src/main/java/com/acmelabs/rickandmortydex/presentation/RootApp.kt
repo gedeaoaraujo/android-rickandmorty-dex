@@ -44,8 +44,13 @@ fun RootApp() {
             ) {
                 val navController = rememberNavController()
                 NavHost(navController, startDestination = Route.HOME) {
-                    composable(Route.HOME) { RootHomeScreen(navController) }
-                    composable(Route.DETAILS) { RootDetailsScreen() }
+                    composable(Route.HOME) {
+                        RootHomeScreen(navController)
+                    }
+                    composable("${Route.DETAILS}/{id}") { backStackEntry ->
+                        val characterId = backStackEntry.arguments?.getString("id")
+                        RootDetailsScreen(characterId?.toInt() ?: 0)
+                    }
                 }
             }
         }
