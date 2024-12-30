@@ -2,11 +2,11 @@ package com.acmelabs.rickandmortydex.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val primaryLight = Color(0xFF565992)
+val primaryLight = Color(0xFF116717)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0xFFE0E0FF)
 val onPrimaryContainerLight = Color(0xFF11144B)
-val secondaryLight = Color(0xFF5C5D72)
+val secondaryLight = Color(0xFF116717)
 val onSecondaryLight = Color(0xFFFFFFFF)
 val secondaryContainerLight = Color(0xFFE1E0F9)
 val onSecondaryContainerLight = Color(0xFF191A2C)
