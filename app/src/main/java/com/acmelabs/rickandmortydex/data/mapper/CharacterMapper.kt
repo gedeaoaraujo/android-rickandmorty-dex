@@ -20,10 +20,10 @@ fun CharacterResponse.toEntity(): CharacterEntity {
     return CharacterEntity(
         id = id,
         name = name,
-        status = status,
+        status = status.takeIf { it != "unknown" },
         species = species,
         type = type.ifBlank { null },
-        gender = gender,
+        gender = gender.takeIf { it != "unknown" },
         originId = urlToId(origin.url),
         locationId = urlToId(location.url),
         image = image,
