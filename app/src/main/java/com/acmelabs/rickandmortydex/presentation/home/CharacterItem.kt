@@ -43,7 +43,7 @@ fun CharacterItem(item: CharacterModel, onSelectItem: () -> Unit = {}) {
                 }
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(text = "Last known location:", color = MaterialTheme.colorScheme.onPrimary)
-                Text(text = item.origin, color = MaterialTheme.colorScheme.onPrimary)
+                Text(text = item.origin?:"Unknown", color = MaterialTheme.colorScheme.onPrimary)
             }
         }
     }

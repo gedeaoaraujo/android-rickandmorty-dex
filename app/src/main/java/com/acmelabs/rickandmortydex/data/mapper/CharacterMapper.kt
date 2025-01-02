@@ -39,7 +39,7 @@ fun CharacterLocationRelation.toModel(): CharacterModel {
         name = character.name,
         status = character.status,
         species = character.species,
-        origin = location?.name.orEmpty(),
+        origin = location?.name,
         imageUrl = character.image,
     )
 }
