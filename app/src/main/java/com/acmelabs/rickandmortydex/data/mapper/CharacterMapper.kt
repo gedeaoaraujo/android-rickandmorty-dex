@@ -22,7 +22,7 @@ fun CharacterResponse.toEntity(): CharacterEntity {
         name = name,
         status = status,
         species = species,
-        type = type,
+        type = type.ifBlank { null },
         gender = gender,
         originId = urlToId(origin.url),
         locationId = urlToId(location.url),
