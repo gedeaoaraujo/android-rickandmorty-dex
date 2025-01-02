@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -25,18 +27,28 @@ fun RootDetailsScreen(characterId: Int) {
     val charLoc by viewModel.charLoc.collectAsState(null)
     RickAndMortyDexTheme {
         Box(Modifier.fillMaxSize()) {
-            Column(Modifier.fillMaxSize()) {
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
                 AsyncImage(
                     modifier = Modifier.fillMaxWidth(),
-                    model = character?.imageUrl.orEmpty(),
+                    model = charLoc?.character?.image,
                     contentScale = ContentScale.FillWidth,
-                    contentDescription = character?.name.orEmpty(),
+                    contentDescription = charLoc?.character?.name.orEmpty(),
                     placeholder = painterResource(id = R.drawable.placeholder)
                 )
-                Text(text = "Name: ${character?.name}", Modifier.padding(8.dp))
-                Text(text = "Origin: ${character?.origin}", Modifier.padding(8.dp))
-                Text(text = "Status: ${character?.status}", Modifier.padding(8.dp))
-                Text(text = "Species: ${character?.species}", Modifier.padding(8.dp))
+
+                Text(text = "Name: ${charLoc?.character?.name?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Gender: ${charLoc?.character?.gender?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Status: ${charLoc?.character?.status?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Species: ${charLoc?.character?.species?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Species type: ${charLoc?.character?.type?:"Unknown"}", Modifier.padding(8.dp))
+
+                Text(text = "Origin: ${charLoc?.location?.name?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Origin type: ${charLoc?.location?.type?:"Unknown"}", Modifier.padding(8.dp))
+                Text(text = "Origin dimension: ${charLoc?.location?.dimension?:"Unknown"}", Modifier.padding(8.dp))
             }
         }
     }
