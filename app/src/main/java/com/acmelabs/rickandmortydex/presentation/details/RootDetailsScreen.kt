@@ -22,7 +22,7 @@ import org.koin.androidx.compose.koinViewModel
 fun RootDetailsScreen(characterId: Int) {
     val viewModel = koinViewModel<DetailsViewModel>()
     viewModel.loadSelectedCharacter(characterId)
-    val character by viewModel.character.collectAsState(null)
+    val charLoc by viewModel.charLoc.collectAsState(null)
     RickAndMortyDexTheme {
         Box(Modifier.fillMaxSize()) {
             Column(Modifier.fillMaxSize()) {
