@@ -38,7 +38,7 @@ fun CharacterItem(item: CharacterModel, onSelectItem: () -> Unit = {}) {
                 Text(text = item.name, color = MaterialTheme.colorScheme.onPrimary)
                 Spacer(modifier = Modifier.height(6.dp))
                 Row {
-                    Text("${item.status} - ", color = MaterialTheme.colorScheme.onPrimary)
+                    Text("${item.status?:"Unknown"} - ", color = MaterialTheme.colorScheme.onPrimary)
                     Text(item.species, color = MaterialTheme.colorScheme.onPrimary)
                 }
                 Spacer(modifier = Modifier.height(6.dp))
