@@ -1,7 +1,8 @@
 plugins {
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -74,7 +75,7 @@ dependencies {
     implementation(libs.coil.network.okhttp)
 
     // Room
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler.v250)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
 
